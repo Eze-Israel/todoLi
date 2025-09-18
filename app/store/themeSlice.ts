@@ -1,4 +1,3 @@
-// app/store/themeSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type ThemeState = "light" | "dark";
