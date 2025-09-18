@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ To-Do List App with 3D 
 
-## Getting Started
+A simple To-Do List Web Application built with Next.js (App Router) and Tailwind CSS, enhanced with a 3D interactive experience powered by React Three Fiber (Three.js).
 
-First, run the development server:
+This project was developed as an assessment task to demonstrate UI implementation, state management, and creativity with 3D.
 
-```bash
+ Features
+
+ Add, complete, and delete tasks
+
+ Task persistence with local state (no backend required)
+
+ Modern UI styled with Tailwind CSS, based on the provided Figma design
+
+ Uses Next.js App Router with React Server & Client Components appropriately
+
+ Interactive 3D experience using React Three Fiber:
+
+Optionally: rotating cube, task progress visualization, or 3D background
+
+      Tech Stack
+
+Next.js 15 (App Router)
+
+React
+
+Tailwind CSS
+
+React Three Fiber
+
+Three.js
+
+ Project Structure
+todoList/
+│── app/
+│   ├── globals.css           Tailwind base styles
+│   ├── layout.tsx            Root layout
+│   ├── page.tsx              Main To-Do page
+│   └── components/          
+│       ├── Header.tsx
+│       ├── TodoInput.tsx
+│       ├── TodoList.tsx
+│       ├── TodoItem.tsx
+│       ├── ThreeDWidget.tsx # React Three Fiber 3D twist
+│
+│── public/                  assets
+│── package.json
+│── tailwind.config.ts
+│── tsconfig.json
+
+⚡ Getting Started
+1. Clone the repo
+git clone  https://github.com/Eze-Israel/todoLi.git
+cd todoLi
+
+2. Install dependencies
+npm install
+# or
+yarn install
+
+3. Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+App will be running at: http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Build for production
+npm run build
+npm run start
 
-## Learn More
+ 3D Twist Options
 
-To learn more about Next.js, take a look at the following resources:
+ 3D progress visualization (e.g., stars lighting up or a 3D progress bar)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🌌 3D animated background
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📦 Deployment
 
-## Deploy on Vercel
+Easily deployable to Vercel
+:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📜 Submission Requirements
+
+ GitHub repository link     #
+
+ Live deployed Vercel link   #
+
