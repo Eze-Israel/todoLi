@@ -10,7 +10,6 @@ interface TodoState {
   items: Todo[];
 }
 
-// Load from localStorage
 const loadTodos = (): Todo[] => {
   if (typeof window !== "undefined") {
     const saved = localStorage.getItem("todos");
@@ -47,8 +46,15 @@ const todoSlice = createSlice({
       state.items = state.items.filter((t) => t.id !== action.payload);
       localStorage.setItem("todos", JSON.stringify(state.items));
     },
+    editTodo: (state, action: PayloadAction<{ id: string; newText: string }>) => {
+      const todo = state.items.find((t) => t.id === action.payload.id);
+      if (todo) {
+        todo.text = action.payload.newText;
+        localStorage.setItem("todos", JSON.stringify(state.items));
+      }
+    },
   },
 });
 
-export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, editTodo } = todoSlice.actions;
 export default todoSlice.reducer;
