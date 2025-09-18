@@ -22,7 +22,7 @@ export default function TodoItem({ todo }: Props) {
 
   return (
     <div
-      className="flex items-center justify-between p-3 border-b dark:border-gray-700"
+      className="flex items-center justify-between p-3 border-b dark:border-gray-700 "
     >
       <div className="flex items-center gap-2">
         <input
@@ -62,6 +62,7 @@ export default function TodoItem({ todo }: Props) {
           <button
             onClick={() => setIsEditing(true)}
             className="px-2 py-1 bg-yellow-500 text-white rounded-md"
+            // add sweetalert here
           >
             Edit
           </button>
@@ -69,12 +70,14 @@ export default function TodoItem({ todo }: Props) {
         <button
           onClick={() => alert(`Viewing: ${todo.text}`)}
           className="px-2 py-1 bg-blue-500 text-white rounded-md"
+          // add sweetalert here
         >
           View
         </button>
         <button
           onClick={() => dispatch(deleteTodo(todo.id))}
           className="px-2 py-1 bg-red-500 text-white rounded-md"
+          // add sweetalert here
         >
           Delete
         </button>

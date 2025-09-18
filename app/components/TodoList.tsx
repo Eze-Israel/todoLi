@@ -1,27 +1,3 @@
-// "use client";
-
-// import { useAppSelector } from "../store/store";
-// import TodoItem from "./TodoItem";
-
-// export default function TodoList() {
-//   const todos = useAppSelector((state) => state.todos.items);
-
-//   if (todos.length === 0) {
-//     return <p className="p-4 text-gray-500 dark:text-gray-400">No tasks yet.</p>;
-//   }
-
-//   return (
-//     <div className="p-4 space-y-2">
-//       {todos.map((todo) => (
-//         <TodoItem key={todo.id} todo={todo} />
-//       ))}
-//     </div>
-//   );
-// }
-
-
-
-
 "use client";
 
 import { useAppSelector } from "../store/store";

@@ -13,9 +13,10 @@ export default function TodoInput() {
     dispatch(addTodo(text));
     setText("");
   };
+  // add sweetalerat here
 
   return (
-    <div className="flex gap-2 p-4">
+    <div className="flex gap-2 p-4 ">
       <input
         type="text"
         value={text}
@@ -25,7 +26,7 @@ export default function TodoInput() {
       />
       <button
         onClick={handleAdd}
-        className="px-4 py-2 bg-primary text-white rounded-md hover:opacity-90"
+        className="px-4 py-2 bg-gray-200 text- rounded-md hover:opacity-90"
       >
         Add
       </button>
