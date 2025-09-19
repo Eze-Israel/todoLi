@@ -5,7 +5,7 @@ import { MessageSquareMore, PaperclipIcon } from "lucide-react";
 const DateO = () => {
   return (
     <div className='flex items-center justify-between px-4'>
-     <button className="text-lg text-red-500 rounded-lg bg-pink-200 p-2">
+     <button className="text-md text-red-500 rounded-lg bg-pink-200 p-2">
             {new Date().toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "short",
@@ -14,12 +14,12 @@ const DateO = () => {
        </button>
 
         <div className='flex space-x-5'>
-        <div className='flex'>
+        <div className='flex space-x-2'>
         <MessageSquareMore />
         <p>4</p>
 
         </div>
-        <div className='flex'>
+        <div className='flex space-x-2'>
         <PaperclipIcon />
             <p>2</p>
         </div>

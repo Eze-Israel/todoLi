@@ -1,27 +1,26 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { toggleTheme } from "../store/themeSlice";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const theme = useAppSelector((state) => state.theme); 
-  const dispatch = useAppDispatch();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      if (theme === "dark") document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <button
-      onClick={() => dispatch(toggleTheme())}
-      className="px-3 py-1 rounded-md border text-sm font-medium bg-primary text-white hover:opacity-90"
-      aria-label="Toggle theme"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="px-4 rounded-full transition 
+                 bg-white text-black
+                 dark:bg-black dark:text-white
+                 border border-gray-300 dark:border-gray-600"
     >
-      {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+      {theme === "dark" ? "☀️" : "🌙"}
     </button>
   );
 }
+

@@ -32,7 +32,7 @@ export default function TodoInput() {
           
         <button
           onClick={() => setIsFormVisible(true)}
-          className="px-4 py-2 bg-gray-100 text-black font-bold rounded-md hover:opacity-90 "
+          className="px-4 py-2 bg-gray-100 text-black font-bold rounded-md hover:bg-gray-200 "
         >
           ➕ Add New Task
         </button>
