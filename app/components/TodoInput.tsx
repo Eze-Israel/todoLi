@@ -26,9 +26,9 @@ export default function TodoInput() {
       />
       <button
         onClick={handleAdd}
-        className="px-4 py-2 bg-gray-200 text- rounded-md hover:opacity-90"
+        className="px-4 py-2 bg-gray-200 text-black font-bold rounded-md hover:opacity-90"
       >
-        Add
+        Add new task
       </button>
     </div>
   );
