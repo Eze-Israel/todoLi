@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface Todo {
   id: string;
   text: string;
+  subtitle?: string;
   completed: boolean;
+  createdAt: number; 
 }
 
 interface TodoState {
@@ -11,50 +13,70 @@ interface TodoState {
 }
 
 const loadTodos = (): Todo[] => {
-  if (typeof window !== "undefined") {
-    const saved = localStorage.getItem("todos");
-    return saved ? JSON.parse(saved) : [];
-  }
+  try {
+    if (typeof window !== "undefined") {
+      const raw = localStorage.getItem("todos");
+      return raw ? JSON.parse(raw) : [];
+    }
+  } catch (e) {}
   return [];
 };
 
-const initialState: TodoState = {
-  items: loadTodos(),
-};
+const initialState: TodoState = { items: loadTodos() };
 
 const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
+    addTodo: (state, action: PayloadAction<{ text: string; subtitle?: string }>) => {
       const newTodo: Todo = {
         id: Date.now().toString(),
-        text: action.payload,
+        text: action.payload.text,
+        subtitle: action.payload.subtitle || "",
         completed: false,
+        createdAt: Date.now(),
       };
       state.items.push(newTodo);
-      localStorage.setItem("todos", JSON.stringify(state.items));
+      try {
+        localStorage.setItem("todos", JSON.stringify(state.items));
+      } catch (e) {}
     },
     toggleTodo: (state, action: PayloadAction<string>) => {
-      const todo = state.items.find((t) => t.id === action.payload);
-      if (todo) {
-        todo.completed = !todo.completed;
-        localStorage.setItem("todos", JSON.stringify(state.items));
+      const t = state.items.find((i) => i.id === action.payload);
+      if (t) {
+        t.completed = !t.completed;
+        try {
+          localStorage.setItem("todos", JSON.stringify(state.items));
+        } catch (e) {}
       }
     },
     deleteTodo: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter((t) => t.id !== action.payload);
-      localStorage.setItem("todos", JSON.stringify(state.items));
-    },
-    editTodo: (state, action: PayloadAction<{ id: string; newText: string }>) => {
-      const todo = state.items.find((t) => t.id === action.payload.id);
-      if (todo) {
-        todo.text = action.payload.newText;
+      state.items = state.items.filter((i) => i.id !== action.payload);
+      try {
         localStorage.setItem("todos", JSON.stringify(state.items));
+      } catch (e) {}
+    },
+    editTodo: (
+      state,
+      action: PayloadAction<{ id: string; newText: string; newSubtitle?: string }>
+    ) => {
+      const t = state.items.find((i) => i.id === action.payload.id);
+      if (t) {
+        t.text = action.payload.newText;
+        t.subtitle = action.payload.newSubtitle ?? t.subtitle;
+        try {
+          localStorage.setItem("todos", JSON.stringify(state.items));
+        } catch (e) {}
       }
+    },
+    setTodos: (state, action: PayloadAction<Todo[]>) => {
+      state.items = action.payload;
+      try {
+        localStorage.setItem("todos", JSON.stringify(state.items));
+      } catch (e) {}
     },
   },
 });
 
-export const { addTodo, toggleTodo, deleteTodo, editTodo } = todoSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, editTodo, setTodos } = todoSlice.actions;
 export default todoSlice.reducer;
