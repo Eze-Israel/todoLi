@@ -44,14 +44,14 @@ export default function TodoInput() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Task title..."
-            className="w-full px-3 py-2 border rounded-md text-black"
+            className="w-full px-3 py-2 border rounded-md "
           />
           <input
             type="text"
             value={subtitle}
             onChange={(e) => setSubtitle(e.target.value)}
             placeholder="Subtitle (optional)..."
-            className="w-full px-3 py-2 border rounded-md  text-black"
+            className="w-full px-3 py-2 border rounded-md"
           />
 
           <div className="flex gap-2">

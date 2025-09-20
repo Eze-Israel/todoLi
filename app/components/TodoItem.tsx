@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { MoreVertical, ListCheckIcon, List } from "lucide-react";
 import ProgressBar from "./ProgressBar";
 import DateO from "./DateO"; 
-import { p } from "framer-motion/client";
+import CelebrationBackground from "./CelebrationBackground";
 
 interface Props {
   todo: Todo;
@@ -19,7 +19,6 @@ export default function TodoItem({ todo, progress }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -74,18 +73,20 @@ export default function TodoItem({ todo, progress }: Props) {
 
   return (
     <div className=" py-4 dark:border-gray-700 space-y-2 border-2 border-gray-200 shadow-lg px-3">
-      {/* Div 1: Title + Menu */}
+        {/* 🎉 Celebration background */}
+      <CelebrationBackground completed={todo.completed} />
+      
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
             checked={todo.completed}
             onChange={() => dispatch(toggleTodo(todo.id))}
-            className="w-5 h-5 accent-primary"
+            className="w-5 h-5 "
           />
           <span
-            className={`font-Semibold ${
-              todo.completed ? "line-through text-gray-400" : "dark:text-white"
+            className={`font-Semibold break-words whitespace-normal${
+              todo.completed ? "line-through " : "dark:text-white"
             }`}
           >
             {todo.text}
@@ -104,11 +105,11 @@ export default function TodoItem({ todo, progress }: Props) {
           </button>
 
           {menuOpen && (
-            <ul className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 shadow-lg rounded-md text-sm z-5">
+            <ul className="absolute right-0 mt-2 w-40 bg-white text-black shadow-lg rounded-md text-sm z-5">
               <li>
                 <button
                   onClick={handleView}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="w-full text-center px-4 py-2 hover:bg-gray-100 "
                 >
                   View
                 </button>
@@ -116,7 +117,7 @@ export default function TodoItem({ todo, progress }: Props) {
               <li>
                 <button
                   onClick={handleEdit}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="w-full text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   Edit
                 </button>
@@ -124,7 +125,7 @@ export default function TodoItem({ todo, progress }: Props) {
               <li>
                 <button
                   onClick={handleDelete}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-red-500"
+                  className="w-full text-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-red-500"
                 >
                   Delete
                 </button>
@@ -134,24 +135,21 @@ export default function TodoItem({ todo, progress }: Props) {
         </div>
       </div>
 
-      {/* Div 2: Subtitle */}
       {todo.subtitle && (
         <div>
-          <span className={`text-md text-gray-500 ${
-              todo.completed ? "line-through text-gray-400" : "dark:text-white"
+          <span className={`text-md text-dark break-words whitespace-normal${
+              todo.completed ? "line-through" : "dark:text-white"
             }`}>{todo.subtitle}</span>
           
         </div>
       )}
 
-      {/* Div 3: Progress bar */}
         <div className="flex justify-between">
        {todo.completed ? <div className="flex space-x-2"><ListCheckIcon/><p>Completed</p></div> : <div className="flex space-x-2"><List/><p>In Progress</p></div>}
        <div>{todo.completed ? "10/10 done" : "5/10"}</div>
        </div>
       <ProgressBar completed={todo.completed} />
 
-      {/* Div 4: Date */}
       <div>
         <DateO />
       </div>

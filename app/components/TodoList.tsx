@@ -8,7 +8,6 @@ export default function TodoList() {
   const todos = useAppSelector((state) => state.todos.items);
   const [mounted, setMounted] = useState(false);
 
-  // this ensures UI only renders after client hydration
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -18,7 +17,7 @@ export default function TodoList() {
   }
 
   if (todos.length === 0) {
-    return <p className="p-4 text-gray-500 dark:text-gray-400">No tasks yet.</p>;
+    return <p className="p-4  text-dark">No tasks yet.</p>;
   }
 
   return (

@@ -5,7 +5,6 @@ export interface Todo {
   text: string;
   subtitle?: string;
   completed: boolean;
-  createdAt: number; 
 }
 
 interface TodoState {
@@ -34,9 +33,8 @@ const todoSlice = createSlice({
         text: action.payload.text,
         subtitle: action.payload.subtitle || "",
         completed: false,
-        createdAt: Date.now(),
       };
-      state.items.push(newTodo);
+      state.items.unshift(newTodo);
       try {
         localStorage.setItem("todos", JSON.stringify(state.items));
       } catch (e) {}
