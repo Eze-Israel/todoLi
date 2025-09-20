@@ -73,9 +73,9 @@ export default function TodoItem({ todo, progress }: Props) {
 
   return (
     <div className=" py-4 dark:border-gray-700 space-y-2 border-2 border-gray-200 shadow-lg px-3">
-        {/* 🎉 Celebration background */}
+
       <CelebrationBackground completed={todo.completed} />
-      
+
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <input

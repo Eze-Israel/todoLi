@@ -16,7 +16,6 @@ function FloatingParticles({ completed }) {
 
   return (
     <group ref={group}>
-      {/* When completed: colorful stars, else soft neutral stars */}
       <Stars
         radius={50}
         depth={50}

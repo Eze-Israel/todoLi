@@ -16,7 +16,7 @@ const DateO = () => {
         <div className='flex space-x-5'>
         <div className='flex space-x-2'>
         <MessageSquareMore />
-        <p>4</p>
+        <p>1</p>
 
         </div>
         <div className='flex space-x-2'>
